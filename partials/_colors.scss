@@ -1,0 +1,34 @@
+// include your own color scheme map here:
+$_colors: (
+  "white"      : #FAFAFB,
+  "gray"       : #F1F2F3,
+  "darkgray"   : #404B5A,
+  "accent-blue": #00C1DD,
+  "accent-pink": #E338A3
+);
+
+@function palette($palette, $tone: 0) {
+  /**
+   *
+   *  Palette function for generating a color within the color scheme
+   *
+   *  @param {string} : palette
+   *  @param {integer} : tone
+   *    if $tone is positive, it will give you a lighter color 
+   *    if $tone is negative, it will give you a darker color
+   */
+  $color: map-get($_colors, $palette);
+
+  @if ($tone > 0) {
+    @return lighten($color, $tone * 1%);
+  } @else if ($tone < 0) {
+    @return darken($color, ($tone * -1) * 1%);
+  }
+  
+  @return $color;
+}
+
+// shorthand function name
+@function pal($palette, $tone: 0) {
+  @return palette($palette, $tone);
+}

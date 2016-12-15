@@ -1,0 +1,14 @@
+$_breakpoints: (
+  "small" : 480px,
+  "medium": 768px,
+  "large" : 1024px,
+  "giant" : 1200px
+);
+
+@mixin breakpoint($point) {
+  @if map-has-key($_breakpoints, $point) {
+    @media (min-width: map-get($_breakpoints, $point)) { @content; }
+  } @else {
+    @error "\"`#{$point}`\" does not exist in the $_breakpoints sass-map."
+  }
+}
