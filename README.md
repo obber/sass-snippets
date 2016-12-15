@@ -42,7 +42,7 @@ The media queries are intended to be used in a mobile-first fashion.
 
 **Usage:**
 
-```
+```scss
 .container {
   display: block;
 
