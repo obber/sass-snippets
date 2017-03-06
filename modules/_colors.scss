@@ -1,5 +1,5 @@
 // include your own color scheme map here:
-$_colors: (
+$colors: (
   "white"      : #FAFAFB,
   "gray"       : #F1F2F3,
   "darkgray"   : #404B5A,
@@ -17,7 +17,7 @@ $_colors: (
    *    if $tone is positive, it will give you a lighter color 
    *    if $tone is negative, it will give you a darker color
    */
-  $color: map-get($_colors, $palette);
+  $color: map-get($colors, $palette);
 
   @if ($tone > 0) {
     @return lighten($color, $tone * 1%);

@@ -1,0 +1,18 @@
+@import '../modules/colors';
+
+@if variable-exists($colors) {
+  @each $color, $_ in $colors {
+    .#{$color} {
+      background-color: pal($color);
+      &:hover {
+        background-color: pal($color, 20);
+      }
+      &:active {
+        background-color: pal($color, -20);
+      }
+    }
+  }
+} @else {
+  @error '$colors is not defined. Did you import the modules/_colors.scss partial?'
+}
+

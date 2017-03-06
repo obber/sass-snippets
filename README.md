@@ -8,11 +8,15 @@ Copy-paste the desired sass partial into your project.
 
 To grab all of them, clone down this repository into your sass project folder, then include the _all.scss partial.
 
-# Usage:
+# Usage
 
 ## _all.scss
 
-`@import` this file if you want all of the sass partials in this repository.
+`@import` this file if you want all of the sass modules & classes in this repository.
+
+# Modules
+
+Modules are sass partials that provide re-usable encapsulations of configurations and/or logic that **does not** actually output any scss. They are primarily useful in your own scss rules, mixins, modules, etc.
 
 ## _colors.scss
 
@@ -50,4 +54,38 @@ The media queries are intended to be used in a mobile-first fashion.
     display: inline-block;
   }
 }
+```
+
+# Classes
+
+Class sass partials **will** output scss if imported. They are helper classes to implement common effects in scss. e.g. color name classes for buttons which provide standard `:hover` & `:active` selection rules.
+
+## _colorHovers.scss
+
+**Dependencies:** `modules/_colors.scss` (or define your own `$colors` scss map)
+
+Maps every color name in the `$colors` map of `modules/_colors.scss` so that each color is output as a class rule. It comes with `:hover` & `:active` selector rules which alters the `background-color` of the element by 10% lighter (hover) and -10% darker (active).
+
+**Usage:**
+
+HTML:   
+```html
+<button class="blue">
+  Hello World
+</button>
+```
+
+SCSS:   
+```scss
+// import the colors module dependency
+@import './modules/colors';
+
+/*
+or define your own color map:
+$colors: (
+  "blue": #398ac7,
+);
+*/
+
+@import './classes/colorHovers';
 ```
