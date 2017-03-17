@@ -1,6 +1,6 @@
 @import '../modules/colors';
 
-@if variable-exists($colors) {
+@if variable-exists('colors') {
   @each $color, $_ in $colors {
     .#{$color} {
       background-color: pal($color);
